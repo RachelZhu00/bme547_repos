@@ -3,4 +3,4 @@ dosage = weight * 30
 
 print("CORRECT DOSAGE")
 print("For a patient weighing {} kg,".format(round(weight)))
-print("  the correct dosage is {} mg the first day".format(round(dosage,2)))
+print("  the correct dosage is {} mg the first day".format(round(dosage,2))

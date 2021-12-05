@@ -33,7 +33,7 @@ def load_and_resize_image(filename):
     adj_factor = 0.5
     new_width = round(original_size[0] * adj_factor)
     new_height = round(original_size[1] * adj_factor)
-    resized_image = pil_image.resize((400, 200))
+    resized_image = pil_image.resize((new_width, new_height))
     tk_image = ImageTk.PhotoImage(resized_image)
     return tk_image
 
@@ -238,7 +238,7 @@ def design_window():
         image_list = answer["ecg_images"]
         inx = indexing(time_list, time)
         image_str = image_list[inx]
-        filename = "ECG"+time
+        filename = "Patient "+mrn+" ECG"+time
         save_b64_image(image_str, filename)
     download_button = ttk.Button(root, text="Download Selected Image", command=image_download)
     download_button.grid(row=6, column=4)
@@ -276,9 +276,12 @@ def design_window():
         image_list = answer["medical_images"]
         inx = indexing(time_list, time)
         image_str = image_list[inx]
-        image_bytes = base64.b64decode(image_str)
-        im = tk.PhotoImage(data=image_bytes)
-        m_image_label1['image'] = im
+        filename = "Patient " + mrn + " Medical Image " + time
+        save_b64_image(image_str, filename)
+        filepath = "image/" + filename + ".jpg"
+        im = load_and_resize_image(filepath)
+        m_image_label2['image'] = im
+
     m_show_button = ttk.Button(root, text="Show Online Image", command=m_display)
     m_show_button.grid(row=7, column=3)
 
@@ -291,7 +294,7 @@ def design_window():
         image_list = answer["medical_images"]
         inx = indexing(time_list, time)
         image_str = image_list[inx]
-        filename = "Medical Image"+time
+        filename = "Patient "+mrn+" Medical Image "+time
         save_b64_image(image_str, filename)
 
     m_download_button = ttk.Button(root, text="Download Selected Image", command=m_image_download)

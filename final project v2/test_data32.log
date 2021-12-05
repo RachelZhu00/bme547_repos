@@ -1,0 +1,10 @@
+INFO:root:Start analyzing test_data32
+INFO:root:Generating data list for analysis
+INFO:root:Finding peaks in filtered and smooth voltage curve.
+WARNING:root:The voltage in test_data32.csv is out of normal range -300~300mV.
+INFO:root:Calculating the duration.
+INFO:root:Calculating the voltage extremes.
+INFO:root:Counting the number of beats in the ECG strip.
+INFO:root:Calculating the average beats per minute (bpm).
+INFO:root:Finding the time that beats occur.
+INFO:root:Plots with original, filtered, smooth voltage data,                    peaks are marked.
